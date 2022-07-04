@@ -1,0 +1,53 @@
+.prodCard{
+    background: #FFFFFF;
+    box-shadow: inset 0px 0px 30px rgba(210, 205, 237, 0.5);
+    border-radius: 10px;
+}
+
+.prodName{
+    font-weight: 700;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 34px;
+    color: #F36D31;
+    text-align: center;
+}
+
+.prodBrand{
+    font-weight: 400;
+    font-size: 15px;
+    color: #353535;
+    opacity: 0.75;
+    text-align: center;
+}
+
+.prodPrice{
+    font-weight: 700;
+font-size: 16px;
+letter-spacing: 0.1em;
+color: #353535;
+text-align: center;
+}
+
+.btn-orange{
+    background-color: #F36D31;
+    color: #fff;
+    border-color: #F36D31;
+    border-radius: 11px;
+    padding: 8px 20px 10px 20px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.addtoCbtn{
+    width: 90%;
+}
+
+.proImage{
+    width: 90%;
+    border-radius: 10px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+}

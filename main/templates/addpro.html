@@ -1,0 +1,149 @@
+{% extends 'baseAdmin.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static './offers.css' %}">
+
+<style>
+
+    .prodCard{
+        background: #FFFFFF;
+        box-shadow: inset 0px 0px 30px rgba(210, 205, 237, 0.5);
+        border-radius: 10px;
+    }
+    
+    .prodName{
+        font-weight: 700;
+        font-size: 25px;
+        font-family: 'Times New Roman', Times, serif;
+        line-height: 34px;
+        color: #F36D31;
+        text-align: center;
+    }
+    
+    .prodBrand{
+        font-weight: 400;
+        font-size: 15px;
+        color: #353535;
+        opacity: 0.75;
+        text-align: center;
+    }
+    
+    .prodPrice{
+        font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    color: #353535;
+    text-align: center;
+    }
+    
+    .btn-orange{
+        background-color: #F36D31;
+        color: #fff;
+        border-color: #F36D31;
+        border-radius: 11px;
+        padding: 8px 20px 10px 20px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+    
+    .addtoCbtn{
+        width: 90%;
+    }
+    
+    .proImage{
+        width: 90%;
+        border-radius: 10px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 10px;
+    }
+</style>
+{% endblock css %}
+
+{% block body %}
+
+    <div class="mainWrapper">
+        <div class="container">
+            <div class="topHeading pt-4">
+                <p class="analHead">Add Products</p>
+            </div>
+
+            <div class="row">
+                <div class="col-6 formWrapper">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="col-12">
+                            <label class="clabel" for="ccode">Name</label>
+                            <input type="text" name="name" id="ccode" class="form-control">
+                        </div>
+                        <div class="col-12">
+                            <label class="clabel" for="cdesc">Brand</label>
+                            <input type="text" name="brandName" id="cdesc" class="form-control">
+                        </div>
+                        
+                        <div class="col-12">
+                            <label class="clabel" for="cprice">Price</label>
+                            <input type="number" name="price" id="cprice" class="form-control">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="clabel" for="cquantity">Quantity</label>
+                            <input type="number" name="currentStock" id="cquantity" class="form-control">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="clabel" for="cimage">Image</label>
+                            <input type="file" name="image" id="cimage" class="form-control">
+                        </div>
+                        <input type="submit" value="ADD PRODUCT" class="csub">
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="row w-75 ">
+                <div class="col-12">
+                    <p class="offerHead">CURRENT PRODUCTS</p>
+                </div>
+
+                <br><br>
+
+                <div class="d-flex flex-wrap justify-content-evenly">
+
+                    {% if products %}
+                    
+                    <div class="container">
+                        <div class="row">
+                            {% for product in products %}
+                            <div class="col-4">
+                                    <div class="prodCard my-3">
+                                        <img src="/{{ product.image }}" class="proImage" alt="">
+                                        <div class="prodCard-info mt-2  ">
+                                            <p class="prodName accentText"> {{ product.name }} </p>
+                                            <p class="prodBrand"> {{ product.brandName}} </p>
+                                            <p class="prodPrice">&#8377; {{ product.price }}</p>
+                                            <p class="prodPrice">Stock - {{ product.currentStock }}</p>
+                                            <div class="d-flex justify-content-center">
+                                                <a href="/admin/products/delete/{{ product.pId}}" class="addtoCbtn text-center my-2 btn-orange btn">Remove</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            
+                    
+                        </div>
+                    </div>
+
+
+                    {% else %}
+                        <p>No products found</p>
+                    {% endif %}
+                      
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    {% endblock body %}

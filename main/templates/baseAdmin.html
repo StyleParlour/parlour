@@ -1,0 +1,99 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock title %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>  
+
+    <style>
+        .sideNavWrapper{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: #F2F1FB;
+            z-index: 9999;
+            box-shadow: inset -10px 0px 20px rgba(210, 205, 237, 0.35);
+        }
+        
+        .navBrand{
+            font-style: italic;
+            font-weight: 700;
+            font-size: 23px;
+        }
+        
+        .accent{
+            color: #F36D31;
+        }
+        
+        .iconify{
+            font-size: 25px;
+            margin-right: 10px;
+        }
+        
+        .navLink{
+            font-size: 18px;
+            text-decoration: none;
+        }
+        
+        .navLinkWrap{
+            padding: 10px;
+        }
+        
+        .navLink{
+            font-weight: 700;
+            color: #353535;
+        }
+        
+        
+    </style>
+    {% block css %} {% endblock css %}
+  </head>
+  <body>
+        <div class="sideNavWrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="navBrand p-4 pb-0"> <span class="accent">Style</span>Parlour</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 navLinkWrap d-flex align-items-center">
+                        <span class="iconify" data-icon="cil:graph"></span>
+                        <a href="/admin/" class="navLink">ANALYTICS</a>
+                    </div>
+                    <div class="col-12 navLinkWrap d-flex align-items-center">
+                        <span class="iconify" data-icon="ic:outline-local-offer"></span>
+                        <a href="/admin/offers/" class="navLink">COUPONS & OFFERS</a>
+                    </div>
+                    <div class="col-12 navLinkWrap d-flex align-items-center">
+                        <span class="iconify" data-icon="ant-design:pie-chart-outlined"></span>
+                        <a href="/admin/frequency/" class="navLink">FREQUENCY</a>
+                    </div>
+                    <div class="col-12 navLinkWrap d-flex align-items-center">
+                        <span class="iconify" data-icon="icon-park-outline:bill"></span>
+                        <a href="/admin/invoice/" class="navLink">INVOICE</a>  
+                    </div>
+                    <div class="col-12 navLinkWrap d-flex align-items-center">
+                        <span class="iconify" data-icon="material-symbols:more-time-rounded"></span>
+                        <a href="/admin/slots/" class="navLink">TIME SLOTS</a>
+                    </div>
+                    <div class="col-12 navLinkWrap d-flex align-items-center">
+                        <span class="iconify" data-icon="carbon:carbon-for-ibm-product"></span>
+                        <a href="/admin/products/" class="navLink">PRODUCTS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block body %}
+    {% endblock body %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>

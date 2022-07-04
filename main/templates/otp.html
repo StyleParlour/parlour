@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock css %}
+
+
+{% block body %}
+<div id="otpModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="text-center accentText">Enter OTP</h2>
+        <form action="" method="get">
+            <div class="form-group">
+                <label for="otp">OTP</label>
+                <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter OTP">
+            </div>
+            <input type="submit" value="Submit" class="btn btn-orange">
+        </form>
+    </div>
+</div>
+
+{% endblock body %}

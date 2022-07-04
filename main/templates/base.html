@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        
+        html{
+            scroll-behavior: smooth;
+        }
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            background: #FAFAFA;
+            box-shadow: 0px 15px 50px #EBE8F9;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        
+        .logo a {
+            text-decoration: none;
+            color: #353535;
+            font-style: italic;
+            font-weight: 700;
+            font-size: 25px;
+        }
+        
+        .logo span {
+            color: #F36D31;
+        }
+        
+        .logo {
+            margin: 0px 0px 0px 170px;
+        }
+        
+        .navlinks a {
+            text-decoration: none;
+            color: #353535;
+            font-weight: 400;
+            font-size: 18px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        
+        .cart {
+            margin: 0px 170px 0px 0px;
+            /* background: #EBE8F9; */
+            border-radius: 10px;
+            /* width: 100; */
+            font-size: 30px;
+        }
+        .cart .btn{
+            background-color: #F36D31;
+            border-radius: 12px;
+        }
+        .cart a{
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .cartIcon{
+            font-size: 38px;
+            background-color: #EBE8F9;
+            padding: 6px;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        .cart-icon-wrap{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+          }
+
+
+          .navBtn{
+              display: none;
+          }
+
+        .phoneNav{
+            position: absolute;
+            top: 60px;
+            right: -430px;
+            z-index: 1;
+            height: calc(100vh - 69.97px);
+            background: #FAFAFA;
+            box-shadow: 0px 15px 50px #EBE8F9;
+            width: 250px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .phoneNav .navlinks{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #navBtn1{
+            display:none !important;
+        }
+
+        .phoneNav .navlinks p{
+            margin: 10px 0;
+        }   
+
+        @media (max-width: 900px) {
+            .centerLink{
+                display: none !important;
+            }
+
+            .logo{
+                margin-left: 0px !important;
+            }
+
+            .cart{
+                margin-right: -12px;
+            }
+
+            .appointment-btn{
+                display: none;
+            }
+
+            .navBtn{
+                display: flex !important;
+            }
+        }
+    </style>
+
+    {% block css %}
+    {% endblock css %}
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <p><a href="/"><span>Style</span>Parlaur</a></p>
+        </div>
+        <div class="centerLink navlinks d-flex align-items-center">
+            <p class="mx-4"><a href="/#a">Home</a></p>
+            <p class="mx-4"><a href="/#b">About us</a></p>
+            <p class="mx-4"><a href="/#c">Featured</a></p>
+            <p class="mx-4"><a href="/#d">Review</a></p>
+        </div>
+        <div class="cart d-flex align-items-center">
+            <div class="cart-icon-wrap m-2">
+                <span class="iconify cartIcon" data-icon="eva:shopping-cart-outline"></span>
+                <div class="navBtn d-flex mx-2" id="navBtn1"> <span class="iconify navIcon" data-icon="eva:menu-arrow-outline" ></span> </div>
+            </div>
+            <button type="button" class="btn appointment-btn"><a href="/shop/"> Buy our products</a></button>
+        </div>
+
+        <div class="phoneNav" id="phoneNav1">
+            <div class="navlinks d-flex align-items-center">
+                <p class="mx-4"><a href="/#a">Home</a></p>
+                <p class="mx-4"><a href="/#b">About us</a></p>
+                <p class="mx-4"><a href="/#c">Featured</a></p>
+                <p class="mx-4"><a href="/#d">Review</a></p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        navBtn = document.getElementById('navBtn1');
+        phoneNav = document.getElementById('phoneNav1');
+
+        navBtn.addEventListener('click', function(){
+            if (phoneNav.style.right === '-430px') {
+                phoneNav.style.right = '0px';
+                console.log('clicked');
+            } else {
+                phoneNav.style.right = '-430px';
+                console.log('clicked else');
+            }
+        });
+    </script>
+    
+
+    {% block body %}
+    
+    {% endblock body %}
+</body>

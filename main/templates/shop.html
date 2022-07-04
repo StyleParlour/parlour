@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+    <link rel="stylesheet" href="{% static './shop.css' %}">
+
+{% endblock css %}
+
+
+{% block body %}
+
+
+<div class="container">
+    <div class="row">
+        {% for products in prods %}
+            <div class="col-3">
+                <div class="prodCard my-3">
+                    <img src="/{{ products.image }}" class="proImage" alt="">
+                    <div class="prodCard-info mt-2  ">
+                        <p class="prodName accentText"> {{ products.name }} </p>
+                        <p class="prodBrand"> {{ products.brandName}} </p>
+                        <p class="prodPrice">&#8377; {{ products.price }}</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="" class="addtoCbtn text-center my-2 btn-orange btn">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        
+
+    </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,107 @@
+.sideNavWrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background: #F2F1FB;
+    z-index: 9999;
+    box-shadow: inset -10px 0px 20px rgba(210, 205, 237, 0.35);
+}
+
+.navBrand{
+    font-style: italic;
+    font-weight: 700;
+    font-size: 23px;
+}
+
+.accent{
+    color: #F36D31;
+}
+
+.iconify{
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.navLink{
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.navLinkWrap{
+    padding: 10px;
+}
+
+.navLink{
+    font-weight: 700;
+    color: #353535;
+}
+
+/* navbar ends here      */
+
+.mainWrapper{
+    position: absolute;
+    top: 0;
+    left: 280px;
+    width: calc(100% - 280px);
+}
+
+.analHead{
+    font-size:40px ;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.increase{
+    font-weight: 700;
+    color: #0EB100;
+}
+
+.totalText{
+    font-weight: 400;
+    font-size: 20px;
+    color: #353535;
+    opacity: 0.7;
+    margin-bottom: 0% !important;
+}
+
+.totalAmount{
+    font-weight: 700;
+    font-size: 32px;
+    color: #353535;
+}
+
+.card{
+    background: #FFFFFF;
+    border: 2px solid rgba(97, 96, 100, 0.05);
+    box-shadow: inset 0px 5px 20px rgba(210, 205, 237, 0.4);
+}
+
+.icon-green{
+    background: #0eb10038;
+    border-radius: 5px;
+    padding: 10px;
+    width: fit-content;
+    position: absolute;
+    top: 15%;
+    right: 10%;
+
+}
+
+.icon-green .iconify{
+    margin-right: 0 !important;
+    color: #0EB100 !important;
+    opacity: 1 !important;
+}
+
+.bottomCard{
+    border: 5px solid #35353524;
+    border-bottom: 0;
+    border-right: 0;
+    border-left: 0;
+}
+
+.summary{
+    margin-top: 1rem !important;
+}

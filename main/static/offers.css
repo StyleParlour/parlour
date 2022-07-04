@@ -1,0 +1,104 @@
+.sideNavWrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background: #F2F1FB;
+    z-index: 9999;
+    box-shadow: inset -10px 0px 20px rgba(210, 205, 237, 0.35);
+}
+
+.navBrand{
+    font-style: italic;
+    font-weight: 700;
+    font-size: 23px;
+}
+
+.accent{
+    color: #F36D31;
+}
+
+.iconify{
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.navLink{
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.navLinkWrap{
+    padding: 10px;
+}
+
+.navLink{
+    font-weight: 700;
+    color: #353535;
+}
+
+/* navbar ends here      */
+
+.mainWrapper{
+    position: absolute;
+    top: 0;
+    left: 280px;
+    width: calc(100% - 280px);
+}
+
+.analHead{
+    font-size:40px ;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.formWrapper{
+    background: #FFFFFF;
+    box-shadow: 0px 5px 20px rgba(210, 205, 237, 0.4);
+    border-radius: 10px;
+    padding: 40px 10px;
+}
+
+.clabel{
+    position: relative;
+    top: 12px;
+    background: #fff;
+    left: 20px;
+    color: #616064;
+    font-weight: 700 ;
+    padding: 0 5px;
+}
+
+.form-control{
+    border: 2px solid #616064 !important;
+}
+
+.csub{
+    color: #fff;
+    background-color: #F36D31;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.offerHead{
+    color: #353535;
+    font-weight: 700;
+    margin-top: 50px;
+}
+
+.coffers{
+    color: #353535;
+    background: #FFFFFF;
+box-shadow: 0px 5px 20px rgba(210, 205, 237, 0.4);
+border-radius: 10px;
+}
+
+.coffers p{
+margin-top: 1rem;
+
+}

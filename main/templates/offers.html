@@ -1,0 +1,66 @@
+{% extends 'baseAdmin.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static './offers.css' %}">
+{% endblock css %}
+
+{% block body %}
+
+    <div class="mainWrapper">
+        <div class="container">
+            <div class="topHeading pt-4">
+                <p class="analHead">OFFERS & COUPONS</p>
+            </div>
+
+            <div class="row">
+                <div class="col-6 formWrapper">
+                    <form action="" method="POST" >
+                        {% csrf_token %}
+                        <div class="col-12">
+                            <label class="clabel" for="ccode">COUPON CODE</label>
+                            <input type="text" name="ccode" id="ccode" class="form-control">
+                        </div>
+                        <div class="col-12">
+                            <label class="clabel" for="cdesc">COUPON DESCRIPTION</label>
+                            <input type="text" name="cdesc" id="cdesc" class="form-control">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="clabel" for="cdesc">PERCENT OFF</label>
+                            <input type="text" name="poff" id="cdesc" class="form-control">
+                        </div>
+
+                        <input type="submit" value="CREATE COUPON" class="csub">
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="row w-75 ">
+                <div class="col-12">
+                    <p class="offerHead">CURRENT OFFERS</p>
+                </div>
+
+                <br><br>
+
+
+                {% for code in codes %}
+                    
+                <div class="row coffers mt-4">
+                    <p class="col-2 couponcode">{{code.code}}</p>
+                    <p class="col-5 coupondesc">{{code.name}}</p>
+                    <p class="col-4 coupondesc"></p>
+                    <a href="/admin/offers/delete/{{code.oId}}" class="col-1 btn btn-danger my-2" >Delete</a>                    
+                </div>
+
+                {% endfor %}
+
+                
+
+                
+                
+                
+            </div>
+        </div>
+    </div>
+    {% endblock body %}

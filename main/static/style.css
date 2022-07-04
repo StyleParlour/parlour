@@ -1,0 +1,143 @@
+#a{
+    width: 100vw;
+    min-height: calc(100vh - 69px);
+    background-color:#FBFAFF ;
+}
+
+.brushImage{
+    height: 275px;
+    width: auto;
+    position: absolute;
+    left: 0;
+}
+
+.rightGirl{
+    position: absolute;
+    right: 0;
+    height: 84%;
+}
+
+.accentText{
+    color:#F36D31;
+}
+
+.accentBlack{
+    color: #353535;
+}
+
+.smallTop{
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.headTop{
+    font-size: 66px;
+    font-weight: 700;
+}
+
+.pHeadDesc{
+    font-weight: 400;
+font-size: 22px;
+}
+
+.btn-orange{
+    background-color: #F36D31;
+    color: #fff;
+    border-color: #F36D31;
+    border-radius: 11px;
+    padding: 8px 20px 10px 20px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.secondCta{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.heroContainer{
+    position: absolute;
+    left: 14vw;
+    top: 30vh;
+}
+
+.quoteIcon{
+    font-size: 24px;
+}
+
+.bottomQuote{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.quoteHero{
+    position: absolute;
+    bottom: 10%;
+    right: 30%;
+}
+
+
+#b{
+    width: 100vw;
+    min-height: 700px;
+    background: #F2F1FB;
+}
+
+.about0{
+    position: absolute;
+    left: 0;
+    top: 10px;
+}
+
+.about1{
+    position: absolute;
+    left: 250px;
+    top:460px;
+}
+
+.about2{
+    position: absolute;
+    left: 400px;
+    top: 320px;
+}
+
+.aboutHead{
+    font-size: 66px;
+    font-weight: 700;
+}
+
+.aboutDesc{
+    font-size: 22px;
+    font-weight: 400;
+}
+
+#c{
+    width: 100vw;
+    height: auto;
+    min-height: 700px;
+}
+
+.bestService{
+    height: auto;
+    width: 85%;
+}
+
+.bestServiceTop{
+    font-weight: 700;
+    font-size: 66px;
+}
+
+.bestDesc{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#d img{
+    width: 100vw;
+    height: auto;
+}
+#e img{
+    padding: 100px 0px 100px 0px;
+    width: 100vw;
+    height: auto;
+}

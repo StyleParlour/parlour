@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-r5l-*(#%j1tz#lx)l!$2ugi4nfoilbpsjqttw-_gf8d9w&4b32
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://stylesparlour.herokuapp.com/','stylesparlour.herokuapp.com','stylesparlour.in','www.stylesparlour.in']
+ALLOWED_HOSTS = ['https://stylesparlour.herokuapp.com/','stylesparlour.herokuapp.com','stylesparlour.in','www.stylesparlour.in','127.0.0.1']
 
 
 # Application definition

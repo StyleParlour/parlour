@@ -1,10 +1,23 @@
+import imp
 from urllib.robotparser import RequestRate
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Product, Offers
+from .models import Product, Offers, Customers, Service, Slot, Booking
+from uuid import uuid4
+import random
+from django.core.mail import send_mail  
 
 # Create your views here.
 def index(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        token = random.randint(1000, 9999)
+        customer = Customers(name=name, email=email, phone=phone, token=token)
+        customer.save()
+        send_mail('OTP', 'Your OTP is ' + str(token), 'hairnationparlour@gmail.com', [email])
+        return redirect('/otp/')
     return render(request, 'index.html')
 
 def analytics(request):
@@ -26,7 +39,10 @@ def frequency(request):
     return render(request, 'frequency.html')
 
 def invoice(request):
-    return render(request, 'invoice.html')
+    bookings = Booking.objects.all()
+    print(bookings)
+    param = {'bookings': bookings}
+    return render(request, 'invoice.html', param)
 
 def slots(request):
     return render(request, 'slots.html')
@@ -64,4 +80,27 @@ def slot(request):
     return render(request, 'slot.html')
 
 def otp(request):
-    return render(request, 'otp.html')
+    slots = Slot.objects.all()
+    Services = Service.objects.all()
+    if request.method == 'POST':
+        otp = request.POST['otp']
+        slot = request.POST['date']
+        service = request.POST['service']
+        customer = Customers.objects.get(token=otp)
+        if customer:
+            slot = Slot.objects.get(sId=slot)
+            service = Service.objects.get(sId=service)
+            booking = Booking(customer=customer, slot=slot, service=service)
+            booking.save()
+            slot.slotRemaining = slot.slotRemaining - 1
+            slot.save()
+            send_mail('Booking', 'Your booking is confirmed', 'hairnationparlour@gmail.com', [customer.email])
+            return redirect('/')
+    param = {'slots': slots, 'Services': Services}
+
+    return render(request, 'otp.html', param)
+
+def invoiceGen(request, id):
+    booking = Booking.objects.get(bId=id)
+    param = {'booking': booking}
+    return render(request, 'invoiceTemp.html',param)

@@ -2,23 +2,136 @@
 {% load static %}
 
 {% block css %}
+<link rel="stylesheet" href="{% static './offers.css' %}">
+<link rel="stylesheet" href="https://code.jquery.com/jquery-3.3.1.slim.min.js">
 
+
+<style>
+.datesSelectCard{
+    width: 150px;
+    /*background-color: antiquewhite; */
+    border: 2px solid rgb(246, 218, 182);
+    padding: 20px;
+    text-align: center;
+    border-radius: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+
+.dateWrapperSlier{
+    overflow-x: scroll;
+}
+/* if radio button is selected change bakground color of the label*/
+.datesSelectCard input:checked + label{
+    background-color: #31a2f3;
+    color: white;
+}
+
+.card-input-element {
+    display: none;
+}
+
+.card-input-element1 {
+    display: none;
+}
+
+.card-input {
+    margin: 10px;
+    padding: 0px;
+}
+
+.card-input:hover {
+    cursor: pointer;
+}
+
+.card-input1 {
+    margin: 10px;
+    padding: 0px;
+}
+
+.card-input1:hover {
+    cursor: pointer;
+}
+
+.card-input-element:checked + .card-input {
+     box-shadow: 0 0 1px 1px #2ecc71;
+}
+
+
+.card-input-element1:checked + .card-input1 {
+    box-shadow: 0 0 1px 1px #2ecc71;
+}
+
+
+
+</style>
 {% endblock css %}
 
 
 {% block body %}
-<div id="otpModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2 class="text-center accentText">Enter OTP</h2>
-        <form action="" method="get">
-            <div class="form-group">
-                <label for="otp">OTP</label>
-                <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter OTP">
+<div class="topHeading pt-4">
+    <p class="analHead text-center">Enter OTP</p>
+</div>
+
+<div class="row d-flex justify-content center" style="position: relative; left:50%; transform:translateX(-25%) ">
+    <div class="col-6 formWrapper">
+        <form action="" method="POST" >
+            {% csrf_token %}
+            <div class="col-12">
+                <label class="clabel" for="ccode">Enter OTP</label>
+                <input type="text" name="otp" id="ccode" class="form-control">
             </div>
-            <input type="submit" value="Submit" class="btn btn-orange">
+            <div class="col-12">
+                <label class="clabel" for="cdesc">Select Slot</label>
+                <div class="row">
+                <div class="col-12 dateWrapperSlier d-flex">
+                    {% for slot in slots %}                    
+                    <label>
+                        <input type="radio"  id="{{ sId }}" value="{{ slot.sId }}" name="date" class="card-input-element" />
+                
+                            <div class="card card-default card-input">
+                            <div class="card-header">{{ slot.slotTime }}</div>
+                            <div class="card-body">
+                                Remaining Slots - {{slot.slotRemaining}}
+                            </div>
+                            </div>
+                    </label>
+                    {% endfor %}
+
+                   
+                </div>
+            </div>
+            </div>
+
+        <div class="col-12">
+                    <label class="clabel" for="cdesc">Select Service</label>
+                    <div class="row">
+                    <div class="col-12 dateWrapperSlier d-flex">
+                        {% for service in Services %}
+                        <label>
+                            <input type="radio"  id="{{ sId }}" value="{{ service.sId }}" name="service" class="card-input-element1" />
+                    
+                                <div class="card card-default card-input1">
+                                <div class="card-header">{{ service.name }}</div>
+                                <div class="card-body">
+                                    Price - &#8377; {{ service.price }}
+                                </div>
+                                </div>
+                        </label>
+                        {% endfor %}
+                </div>
+                </div>
+    
+            </div>
+
+            <input type="submit" value="Confirm Booking" class="csub">
         </form>
     </div>
+
 </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+
 
 {% endblock body %}

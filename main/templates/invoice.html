@@ -25,135 +25,21 @@
                     </tr>
                   </thead>
                   <tbody>
+
+                    {% for invoice in bookings %}
+                    
                     <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>1234567890</td>
-                      <td>HAIRCUT</td>
-                      <td>12/12/2019</td>
-                      <td>RS.100</td>
-                      <td><a href="" class="btn btn-primary">Download</a></td> 
+                      <th scope="row">{{ invoice.bId }}</th>
+                      <td>{{ invoice.customer.name }}</td>
+                      <td>{{ invoice.customer.phone }}</td>
+                      <td>{{ invoice.service.name }}</td>
+                      <td>{{ invoice.dateCreated}}</td>
+                      <td>RS.{{ invoice.service.price }}</td>
+                      <td><a href="/invoiceGen/{{ invoice.bId }}" class="btn btn-primary">View</a></td> 
                     </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>1234567890</td>
-                        <td>HAIRCUT</td>
-                        <td>12/12/2019</td>
-                        <td>RS.100</td>
-                        <td><a href="" class="btn btn-primary">Download</a></td> 
-                      </tr>
 
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>1234567890</td>
-                        <td>HAIRCUT</td>
-                        <td>12/12/2019</td>
-                        <td>RS.100</td>
-                        <td><a href="" class="btn btn-primary">Download</a></td> 
-                      </tr>
-
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>1234567890</td>
-                        <td>HAIRCUT</td>
-                        <td>12/12/2019</td>
-                        <td>RS.100</td>
-                        <td><a href="" class="btn btn-primary">Download</a></td> 
-                      </tr>
-
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>1234567890</td>
-                        <td>HAIRCUT</td>
-                        <td>12/12/2019</td>
-                        <td>RS.100</td>
-                        <td><a href="" class="btn btn-primary">Download</a></td> 
-                      </tr>
-
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>1234567890</td>
-                        <td>HAIRCUT</td>
-                        <td>12/12/2019</td>
-                        <td>RS.100</td>
-                        <td><a href="" class="btn btn-primary">Download</a></td> 
-                      </tr>
-
-
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>1234567890</td>
-                        <td>HAIRCUT</td>
-                        <td>12/12/2019</td>
-                        <td>RS.100</td>
-                        <td><a href="" class="btn btn-primary">Download</a></td> 
-                      </tr>
-
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>1234567890</td>
-                        <td>HAIRCUT</td>
-                        <td>12/12/2019</td>
-                        <td>RS.100</td>
-                        <td><a href="" class="btn btn-primary">Download</a></td> 
-                      </tr>
-
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>1234567890</td>
-                        <td>HAIRCUT</td>
-                        <td>12/12/2019</td>
-                        <td>RS.100</td>
-                        <td><a href="" class="btn btn-primary">Download</a></td> 
-                      </tr>
-
-
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>1234567890</td>
-                        <td>HAIRCUT</td>
-                        <td>12/12/2019</td>
-                        <td>RS.100</td>
-                        <td><a href="" class="btn btn-primary">Download</a></td> 
-                      </tr>
-
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>1234567890</td>
-                        <td>HAIRCUT</td>
-                        <td>12/12/2019</td>
-                        <td>RS.100</td>
-                        <td><a href="" class="btn btn-primary">Download</a></td> 
-                      </tr>
-
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>1234567890</td>
-                        <td>HAIRCUT</td>
-                        <td>12/12/2019</td>
-                        <td>RS.100</td>
-                        <td><a href="" class="btn btn-primary">Download</a></td> 
-                      </tr>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>1234567890</td>
-                        <td>HAIRCUT</td>
-                        <td>12/12/2019</td>
-                        <td>RS.100</td>
-                        <td><a href="" class="btn btn-primary">Download</a></td> 
-                      </tr>
+                    {% endfor %}
+                   
                   </tbody>
               </table>
         </div>

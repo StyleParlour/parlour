@@ -39,12 +39,30 @@ class Customers(models.Model):
 
 class Slot(models.Model):
     sId = models.AutoField(primary_key=True)
-    slotDate = models.DateField()
-    slotTime = models.TimeField()
-    slotAvailable = models.IntegerField()
+    
+    # time field with 1 hour interval 
+    slotTime = models.DateTimeField()
+    slotRemaining = models.IntegerField(default=5)
+    # time field with 1 hour interval 
+
 
 
     def __str__(self):
-        date = self.slotDate
+        date = self.slotTime
         date = str(date)
         return date
+
+class Service(models.Model):
+    sId = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    price = models.FloatField()
+
+    def __str__(self):
+        return self.name
+
+class Booking(models.Model):
+    bId = models.AutoField(primary_key=True)
+    customer = models.ForeignKey(Customers, on_delete=models.CASCADE, null=True)
+    slot = models.ForeignKey(Slot, on_delete=models.CASCADE, null=True)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
+    dateCreated = models.DateField(auto_now_add=True)

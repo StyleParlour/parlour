@@ -16,4 +16,5 @@ urlpatterns = [
     path('shop/', views.shop, name='shop'),
     path('slot/', views.slot, name='slot'),
     path('otp/', views.otp, name='otp'),
+    path('invoiceGen/<int:id>', views.invoiceGen, name='invoiceGen'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

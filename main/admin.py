@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Offers, Customers, Slot
+from .models import Product, Offers, Customers, Slot, Booking, Service
 
 
 # Register your models here.
@@ -23,3 +23,14 @@ class SlotAdmin(admin.ModelAdmin):
     list_display = ('sId', 'slotDate', 'slotTime', 'slotAvailable')
 
 admin.site.register(Slot, admin.ModelAdmin)
+
+class BookingAdmin(admin.ModelAdmin):
+    list_display = ('bId', 'customer', 'slot', 'service' ,'dateCreated')
+
+admin.site.register(Booking, admin.ModelAdmin)
+
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ('sId', 'name', 'price')
+
+admin.site.register(Service, admin.ModelAdmin)
+

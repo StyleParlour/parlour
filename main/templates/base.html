@@ -128,6 +128,14 @@
         }   
 
         @media (max-width: 900px) {
+
+            .topwrp{
+                flex-direction: column;
+            }
+
+            .topwrp > div{
+                margin-top: 10px;
+            }
             .centerLink{
                 display: none !important;
             }
@@ -206,7 +214,7 @@
     {% endblock body %}
 
     <footer class="p-3 navbar sticky-bottom d-flex flex-column bg-dark ">
-        <div class="topwrp bg-dark d-flex justify-content-between">
+        <div class="topwrp bg-dark d-flex  justify-content-between">
             <p class="text-center text-light">&copy;2022 StyleParlour | All Rights Reserved</p>
             <div class="right d-flex ">
                 <p class="text-light mx-2">&#8226; Terms & conditions</p>

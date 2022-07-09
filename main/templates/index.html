@@ -16,7 +16,7 @@
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 10; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -313,7 +313,7 @@
                         </form>
                     </div>
                 </div>
-                <a href="" class="btn secondCta accentBlack">See our products <span class="iconify " data-icon="akar-icons:arrow-right"></span></a>
+                <a href="/shop/" class="btn secondCta accentBlack">See our products <span class="iconify " data-icon="akar-icons:arrow-right"></span></a>
             </div>
         </div>
 
@@ -338,18 +338,77 @@
             <div class="col-lg-8 col-sm-12 ">
                 <div class="container  d-flex  flex-column justify-content-center">
                     <h1 class="aboutHead accentBlack pt-5 mt-4 mx-4">About Us</h1>
-                    <p class="aboutDesc accentBlack mt-4 mx-4 w-75" id="aboutDescId">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum odio magna lobortis sem arcu urna augue nunc, nisi. Tincidunt convallis non cursus neque ipsum et nunc amet. Lacinia amet sit velit diam. Morbi suspendisse adipiscing mi nec lacus dolor. Hac nulla est egestas nunc nulla libero. 
+                    <p class="aboutDesc accentBlack mt-4 mx-4 w-75" id="aboutDescId">“Our customers are vital to us, so we constantly train our specialists to guarantee that all medicines are of the most astounding standard and that every customer gets the best consideration” We convey top-notch proficient hair items intended to guarantee our visitors put their best self forward, both in the salon and at home
+ 
+                      <br>
                         <br>
-                        <br>
-                        Neque a dictum ultricies est. Blandit scelerisque nullam amet libero dui ante quis. Vitae ornare morbi felis fermentum. Nibh accumsan, nunc porttitor vitae. Urna in accumsan odio tellus tellus sem nibh erat. Facilisis enim, duis ac aliquet magna senectus. Ultricies lorem a ipsum viverra.</p>
+                        Styles Beauty Parlour is a family-possessed business committed to giving perfection to our administration! Our committed group of beauticians and hairstylists specialists accompany innumerable long periods of involvement in the magnificence business. We endeavor to make each customer our need, ensuring we tune in to everything about that we feature every individual’s common magnificence..</p>
 
                     <div class="aboutCtaWrapper mt-4 mx-4">
-                    <a href="" class="btn btn-orange">Buy our products</a>
+                    <a href="/shop/" class="btn btn-orange">Buy our products</a>
                     <a href="https://goo.gl/maps/ajEqH5HJu31ocE128" target="_blank" class="btn secondCta accentBlack">See us on map <span class="iconify " data-icon="akar-icons:arrow-right"></span></a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="h" class="container my-5">
+      <h1 class="font-weight-bold text-center mb-2">Meet Our Team</h1>
+  <p class="font-italic text-muted text-center mb-4">Blessed are the stylists that bring out the beauty in others.</p>
+
+  <div class="row pb-5 mb-4">
+
+
+    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+      <!-- Card-->
+      <div class="card shadow-sm rounded" style="border: 2px solid #f36d31 !important;">
+        <div class="card-body p-0"><img src="{% static './img/swati.jpeg' %}" alt="" class="w-100 card-img-top" style="height:340px; object-fit:contain; background-color:#f36d312e ;">
+          <div class="p-4">
+            <h5 class="mb-0">Dr. Swati Sinha </h5>
+            <p class="small text-muted">Leadership</p>
+            <ul class="social mb-0 list-inline mt-3">
+              <li class="list-inline-item m-0"><span class="iconify" data-icon="clarity:scissors-solid"></span> Academician & Engineer by profession</li>
+              <li class="list-inline-item m-0"><span class="iconify" data-icon="clarity:scissors-solid"></span> Upbringing in Aristocratic Army family</li>
+              <li class="list-inline-item m-0"><span class="iconify" data-icon="clarity:scissors-solid"></span> Spicing it up with modernization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+      <!-- Card-->
+      <div class="card shadow-sm rounded" style="border: 2px solid #f36d31 !important;">
+        <div class="card-body p-0"><img src="{% static './img/kushal.jpeg' %}" alt="" class="w-100 card-img-top" style="height:340px; object-fit:contain; background-color:#f36d312e ;">
+          <div class="p-4">
+            <h5 class="mb-0">Dr. Kushal Tuckley</h5>
+            <p class="small text-muted">Mentor- Partner</p>
+            <ul class="social mb-0 list-inline mt-3">
+              <li class="list-inline-item m-0"><span class="iconify" data-icon="clarity:scissors-solid"></span> Scientist and entrepreneur</li>
+              <li class="list-inline-item m-0"><span class="iconify" data-icon="clarity:scissors-solid"></span> Converting  'customer wish to resource optimum expression'</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4  col-md-6 mb-4 mb-lg-0">
+      <!-- Card-->
+      <div class="card shadow-sm rounded" style="border: 2px solid #f36d31 !important;">
+        <div class="card-body p-0"><img src="{% static './img/kv.jpeg' %}" alt="" class="w-100 card-img-top" style="height:340px; object-fit:contain; background-color:#f36d312e ;">
+          <div class="p-4">
+            <h5 class="mb-0">K V  Shanta</h5>
+            <p class="small text-muted">Principle Beautician</p>
+            <ul class="social mb-0 list-inline mt-3">
+              <li class="list-inline-item m-0"><span class="iconify" data-icon="clarity:scissors-solid"></span> Founder member & the torch-bearer of Style</li>
+              <li class="list-inline-item m-0"><span class="iconify" data-icon="clarity:scissors-solid"></span> Realizing concepts in 'Style'</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     </div>
 
     <div id="c">
@@ -358,11 +417,16 @@
                 <div class="col-lg-7 col-sm-12 px-5 ">
                     <h1 class="bestServiceTop accentBlack my-3 mx-5"> Our <span class="accentText">best</span> serivce! </h1>
                     <p class="bestDesc accentBlack w-75 mx-5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum odio magna lobortis sem arcu urna augue nunc, nisi. <br> <br>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum odio magna lobortis sem arcu urna augue nunc, nisi. Tincidunt convallis non cursus neque ipsum et nunc amet. Lacinia amet sit velit diam. Morbi suspendisse adipiscing mi nec lacus dolor. Hac nulla est egestas nunc nulla libero. <br><br>
-                        Neque a dictum ultricies est. Blandit scelerisque nullam amet libero dui ante quis. Vitae ornare morbi felis fermentum. Nibh accumsan, nunc porttitor vitae. Urna in accumsan odio tellus tellus sem nibh erat. Facilisis enim, duis ac aliquet magna senectus. Ultricies lorem a ipsum viverra.
+                      Looks has advanced throughout the years; with new methods and styles while continually refreshing its beauticians with the regularly developing patterns in the national and global market.
+                      ‘Organization Name’ always endeavors to teach and prepare their beauticians about the most recent procedures and styles with cutting-edge innovation, by sending the beauticians to different classes and by taking an interest in different occasions of all kinds. <br> <br>
+                        We specialize in the following services<br><br>
+                        <span class="iconify" data-icon="akar-icons:chevron-right" style="color: #f24e1e;"></span> Haircuts & Styling<br>
+                        <span class="iconify" data-icon="akar-icons:chevron-right" style="color: #f24e1e;"></span> Facials<br>
+                        <span class="iconify" data-icon="akar-icons:chevron-right" style="color: #f24e1e;"></span> Waxing<br>
+                        <span class="iconify" data-icon="akar-icons:chevron-right" style="color: #f24e1e;"></span> Make-up<br>
+                        <span class="iconify" data-icon="akar-icons:chevron-right" style="color: #f24e1e;"></span> Bridal Make-up<br>
                     </p>
-                    <a href="" class="btn btn-orange mt-4 mx-5 bookName">Book now!</a>
+                    <button id="otpBtn" class="btn btn-orange mt-4 mx-5 bookName">Book now!</button>
 
                 </div>
 
@@ -373,106 +437,108 @@
         </div>        
     </div>
 
+
+
     <div id="d" style="background-color:#f2f1fb;">
-        <div class="row">
-            <div class="col-12 mx-2"><h1 class="bestServiceTop text-center accentText my-2 mt-5 mx-5"> Testimonial </h1></div>
-            <div class="testimonial3 py-5 ">
-                <div class="col-12 px-2">
-                  <!-- Row  -->
-                  <div class="owl-carousel owl-theme testi3 mx-3">
-                    <!-- item -->
-                    <div class="item">
-                      <div class="card card-shadow border-0 mb-4">
-                        <div class="card-body">
-                          <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
-                          <div class="d-block d-md-flex align-items-center">
-                            <span class="thumb-img"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/1.jpg" alt="wrapkit" class="rounded-circle"/></span>
-                            <div class="ml-3">
-                              <h6 class="mb-0 customer">Michelle Anderson</h6>
-                              <div class="font-10">
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-muted"><i class="icon-star"></i></a>
-                              </div>
+      <div class="row">
+          <div class="col-12 mx-2"><h1 class="bestServiceTop text-center accentText my-2 mt-5 mx-5"> Testimonial </h1></div>
+          <div class="testimonial3 py-5 ">
+              <div class="col-12 px-2">
+                <!-- Row  -->
+                <div class="owl-carousel owl-theme testi3 mx-3">
+                  <!-- item -->
+                  <div class="item">
+                    <div class="card card-shadow border-0 mb-4">
+                      <div class="card-body">
+                        <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
+                        <div class="d-block d-md-flex align-items-center">
+                          <span class="thumb-img"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/1.jpg" alt="wrapkit" class="rounded-circle"/></span>
+                          <div class="ml-3">
+                            <h6 class="mb-0 customer">Michelle Anderson</h6>
+                            <div class="font-10">
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-muted"><i class="icon-star"></i></a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <!-- item -->
-                    <!-- item -->
-                    <div class="item">
-                      <div class="card card-shadow border-0 mb-4">
-                        <div class="card-body">
-                          <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
-                          <div class="d-block d-md-flex align-items-center">
-                            <span class="thumb-img"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/2.jpg" alt="wrapkit" class="rounded-circle"/></span>
-                            <div class="ml-3">
-                              <h6 class="mb-0 customer">Mark mesty</h6>
-                              <div class="font-10">
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-muted"><i class="icon-star"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- item -->
-                    <!-- item -->
-                    <div class="item">
-                      <div class="card card-shadow border-0 mb-4">
-                        <div class="card-body">
-                          <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
-                          <div class="d-block d-md-flex align-items-center">
-                            <span class="thumb-img"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/3.jpg" alt="wrapkit" class="rounded-circle"/></span>
-                            <div class="ml-3">
-                              <h6 class="mb-0 customer">Limpsy adam</h6>
-                              <div class="font-10">
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-muted"><i class="icon-star"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- item -->
-                    <!-- item -->
-                    <div class="item">
-                      <div class="card card-shadow border-0 mb-4">
-                        <div class="card-body">
-                          <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
-                          <div class="d-flex no-block align-items-center">
-                            <span class="thumb-img"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/1.jpg" alt="wrapkit" class="rounded-circle"/></span>
-                            <div class="ml-3">
-                              <h6 class="mb-0 customer">Michelle Anderson</h6>
-                              <div class="font-10">
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-success"><i class="icon-star"></i></a>
-                                <a href="" class="text-muted"><i class="icon-star"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- item -->
                   </div>
+                  <!-- item -->
+                  <!-- item -->
+                  <div class="item">
+                    <div class="card card-shadow border-0 mb-4">
+                      <div class="card-body">
+                        <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
+                        <div class="d-block d-md-flex align-items-center">
+                          <span class="thumb-img"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/2.jpg" alt="wrapkit" class="rounded-circle"/></span>
+                          <div class="ml-3">
+                            <h6 class="mb-0 customer">Mark mesty</h6>
+                            <div class="font-10">
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-muted"><i class="icon-star"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- item -->
+                  <!-- item -->
+                  <div class="item">
+                    <div class="card card-shadow border-0 mb-4">
+                      <div class="card-body">
+                        <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
+                        <div class="d-block d-md-flex align-items-center">
+                          <span class="thumb-img"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/3.jpg" alt="wrapkit" class="rounded-circle"/></span>
+                          <div class="ml-3">
+                            <h6 class="mb-0 customer">Limpsy adam</h6>
+                            <div class="font-10">
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-muted"><i class="icon-star"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- item -->
+                  <!-- item -->
+                  <div class="item">
+                    <div class="card card-shadow border-0 mb-4">
+                      <div class="card-body">
+                        <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
+                        <div class="d-flex no-block align-items-center">
+                          <span class="thumb-img"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/1.jpg" alt="wrapkit" class="rounded-circle"/></span>
+                          <div class="ml-3">
+                            <h6 class="mb-0 customer">Michelle Anderson</h6>
+                            <div class="font-10">
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-success"><i class="icon-star"></i></a>
+                              <a href="" class="text-muted"><i class="icon-star"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- item -->
                 </div>
               </div>
-              
-        </div>
+            </div>
+            
+      </div>
     </div>
 
     <!-- jquery cdn -->
@@ -486,6 +552,7 @@ var otpModal = document.getElementById("otpModal");
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
+var otpBtn = document.getElementById("otpBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -496,6 +563,9 @@ btn.onclick = function() {
   modal.style.display = "block";
 }
 
+otpBtn.onclick = function() {
+  modal.style.display = "block";
+}
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";

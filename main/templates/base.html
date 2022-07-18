@@ -17,6 +17,9 @@
     <style>
         body {
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
         html{
@@ -120,7 +123,7 @@
         }
 
         #navBtn1{
-            display:none !important;
+            display:none;
         }
 
         .phoneNav .navlinks p{
@@ -155,6 +158,10 @@
             .navBtn{
                 display: flex !important;
             }
+
+            #phoneNav1{
+                z-index:100;
+            }
         }
     </style>
 
@@ -168,26 +175,24 @@
             <p><a href="/"><span>Style</span>Parlour</a></p>
         </div>
         <div class="centerLink navlinks d-flex align-items-center">
-            <p class="mx-4"><a href="/#a">Home</a></p>
-            <p class="mx-4"><a href="/#b">About us</a></p>
-            <p class="mx-4"><a href="/#c">Featured</a></p>
-            <p class="mx-4"><a href="/#h">Team</a></p>
-            <p class="mx-4"><a href="/#d">Review</a></p>
+            <p class="mx-4"><a href="/">Home</a></p>
+            <p class="mx-4"><a href="/about/">About us</a></p>
+            <p class="mx-4"><a href="/team/">Team</a></p>
+            {% comment %} <p class="mx-4"><a href="/#d">Shop</a></p> {% endcomment %}
         </div>
-        <div class="cart d-flex align-items-center">
+        <div class="cart d-flex align-items-center" id="cart">
             <div class="cart-icon-wrap m-2">
-                <span class="iconify cartIcon" data-icon="eva:shopping-cart-outline"></span>
-                <div class="navBtn d-flex mx-2" id="navBtn1"> <span class="iconify navIcon" data-icon="eva:menu-arrow-outline" ></span> </div>
+                {% comment %} <span class="iconify cartIcon"  data-icon="eva:shopping-cart-outline"></span> {% endcomment %}
+                <div class="navBtn mx-2" id="navBtn1"> <span class="iconify navIcon" data-icon="eva:menu-arrow-outline" ></span> </div>
             </div>
             <button type="button" class="btn appointment-btn"><a href="/shop/"> Buy our products</a></button>
         </div>
 
         <div class="phoneNav" id="phoneNav1">
             <div class="navlinks d-flex align-items-center">
-                <p class="mx-4"><a href="/#a">Home</a></p>
-                <p class="mx-4"><a href="/#b">About us</a></p>
-                <p class="mx-4"><a href="/#c">Featured</a></p>
-                <p class="mx-4"><a href="/#d">Review</a></p>
+                <p class="mx-4"><a href="/">Home</a></p>
+                <p class="mx-4"><a href="/about/">About us</a></p>
+                <p class="mx-4"><a href="/team/">Team</a></p>
             </div>
         </div>
     </div>
@@ -195,9 +200,10 @@
 
     <script>
         navBtn = document.getElementById('navBtn1');
+        cartBtn = document.getElementById('cart');
         phoneNav = document.getElementById('phoneNav1');
 
-        navBtn.addEventListener('click', function(){
+        cartBtn.addEventListener('click', function(){
             if (phoneNav.style.right === '-430px') {
                 phoneNav.style.right = '0px';
                 console.log('clicked');
@@ -213,7 +219,7 @@
     
     {% endblock body %}
 
-    <footer class="p-3 navbar sticky-bottom d-flex flex-column bg-dark ">
+    <footer class="p-3 mt-auto navbar sticky-bottom d-flex flex-column bg-dark ">
         <div class="topwrp bg-dark d-flex  justify-content-between">
             <p class="text-center text-light">&copy;2022 StyleParlour | All Rights Reserved</p>
             <div class="right d-flex ">

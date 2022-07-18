@@ -96,12 +96,18 @@
 			.invoice-box.rtl table tr td:nth-child(2) {
 				text-align: left;
 			}
+
+			@media print {
+				.btn-success {
+					display: none;
+				}
+			}
 		</style>
 {% endblock css %}
 
     
     {% block body %}
-		<div class="invoice-box" id=" editor">
+		<div class="invoice-box" id="editor">
 			<table cellpadding="0" cellspacing="0">
 				<tr class="top">
 					<td colspan="2">
@@ -175,25 +181,14 @@
 		</div>
 
         <div class="d-flex justify-content-center">
-            <button id="cmd" class="btn btn-success p-3 m-4">Generate PDF</button>
+            <button id="cmd" class="btn btn-success p-3 m-4" onclick="printDiv()">Generate PDF</button>
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
         <script>
-            var doc = new jsPDF();
-    var specialElementHandlers = {
-        '#editor': function (element, renderer) {
-            return true;
-        }
-    };
-
-    $('#cmd').click(function () {
-        doc.fromHTML($('#content').html(), 15, 15, {
-            'width': 170,
-                'elementHandlers': specialElementHandlers
-        });
-        doc.save('invoice.pdf');
-    });
+			function printDiv() {
+				window.print();
+			}
         </script>
 
     {% endblock body %}

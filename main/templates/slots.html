@@ -1,0 +1,38 @@
+{% extends 'baseAdmin.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static './offers.css' %}">
+{% endblock css %}
+
+{% block body %}
+
+    <div class="mainWrapper">
+        <div class="container">
+            <div class="topHeading pt-4">
+                <p class="analHead">Add Slots</p>
+            </div>
+
+            <div class="row">
+                <div class="col-6 formWrapper">
+                    <form action="" method="POST" >
+                        {% csrf_token %}
+                        <div class="col-12">
+                            <label class="clabel" for="ccode">Slot Date</label>
+                            <input type="date" name="slotDate"  id="ccode" class="form-control">
+                        </div>
+                        <div class="col-12">
+                            <label class="clabel" for="ccode">Slot Time</label>
+                            <input type="time" name="slotTime" id="ccode" class="form-control">
+                        </div>
+
+                        <input type="submit" value="CREATE Slot" class="csub">
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock body %}

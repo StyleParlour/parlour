@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Offers, Customers, Slot, Booking, Service
+from .models import Product, Offers, Customers, Slot, Booking, Service, Order
 
 
 # Register your models here.
@@ -33,4 +33,9 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display = ('sId', 'name', 'price')
 
 admin.site.register(Service, admin.ModelAdmin)
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('oId', 'name', 'email', 'orderTotal')
+
+admin.site.register(Order, admin.ModelAdmin)
 

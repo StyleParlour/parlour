@@ -12,6 +12,29 @@
                 <p class="analHead">INVOICES</p>
             </div>
 
+            <!-- <div class="newForm">
+              <form action="" method="post">
+                
+                <div class="container">
+                  <div class="row">
+                    <div class="col-6">
+                      <input type="text" placeholder="Name"  class="form-control border-0 mt-2">
+                    </div>
+                    <div class="col-6">
+                      <input type="text" placeholder="Phone" class="form-control border-0 mt-2">
+                    </div>
+                    <div class="col-6">  
+                      <input type="text" placeholder="Service" class="form-control border-0 mt-2">
+                    </div>
+                    <div class="col-6">
+                      <input type="text" placeholder="Price" class="form-control border-0 mt-2">
+                    </div>
+                  </div>
+                  <button type="submit" class="my-3 btn btn-primary"> &nbsp;&nbsp; Add &nbsp;&nbsp;  </button>
+                </div>
+
+              </form>
+            </div> -->
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -33,7 +56,7 @@
                       <td>{{ invoice.customer.name }}</td>
                       <td>{{ invoice.customer.phone }}</td>
                       <td>{{ invoice.service.name }}</td>
-                      <td>{{ invoice.dateCreated}}</td>
+                      <td>{{ invoice.bookingDate}}</td>
                       <td>RS.{{ invoice.service.price }}</td>
                       <td><a href="/invoiceGen/{{ invoice.bId }}" class="btn btn-primary">View</a></td> 
                     </tr>

@@ -6,6 +6,8 @@ from .models import Product, Offers, Customers, Service, Slot, Booking
 from uuid import uuid4
 import random
 from django.core.mail import send_mail  
+from django.contrib.auth import authenticate, login
+import messagebird
 
 # Create your views here.
 def index(request):
@@ -16,12 +18,45 @@ def index(request):
         token = random.randint(1000, 9999)
         customer = Customers(name=name, email=email, phone=phone, token=token)
         customer.save()
+        client = messagebird.Client(ACCESS_KEY)
+        message = client.message_create(
+            'TestMessage',
+            'RECIPIENT',
+            'This is a test message',
+            { 'reference' : 'Foobar' }
+        )
         send_mail('OTP', 'Your OTP is ' + str(token), 'hairnationparlour@gmail.com', [email])
         return redirect('/otp/')
     return render(request, 'index.html')
 
 def analytics(request):
-    return render(request, 'analytics.html')
+    # check if the user is logged in
+    if request.user.is_authenticated:
+        bookings = Booking.objects.all()
+        # get total number of bookings
+        totalBookings = len(bookings)
+        # get total amount of price of bookings
+        totalAmount = 0
+        for booking in bookings:
+            totalAmount += booking.service.price
+        print(totalAmount)
+        print(totalBookings)
+        # sort bookings by date
+        bookings = sorted(bookings, key=lambda x: x.slot.slotDate)
+        booking = len(bookings)
+        # get service price of each booking and store in a dictionary with key as date
+        servicePrice = {}
+        for booking in bookings:
+            if booking.slot.slotDate in servicePrice:
+                servicePrice[booking.slot.slotDate] += booking.service.price
+                print('if')
+            else:
+                servicePrice[booking.slot.slotDate] = booking.service.price
+                print('else')
+        param = {'bookings': bookings, 'servicePrice': servicePrice, 'totalAmount': totalAmount, 'totalBookings': totalBookings}
+        return render(request, 'analytics.html', param)
+    else:
+        return redirect('/login/')
 
 def offers(request):
     if request.method =="POST":
@@ -77,7 +112,15 @@ def shop(request):
     return render(request, 'shop.html', param)
 
 def slot(request):
-    return render(request, 'slot.html')
+    if request.method == 'POST':
+        slotTime = request.POST['slotTime']
+        slotDate = request.POST['slotDate']
+        print(slotTime, slotDate)
+        slot = Slot(slotTime=slotTime, slotDate=slotDate)
+        slot.save()
+    slots = Slot.objects.all()
+    param = {'slots': slots}
+    return render(request, 'slot.html', param)
 
 def otp(request):
     slots = Slot.objects.all()
@@ -104,3 +147,37 @@ def invoiceGen(request, id):
     booking = Booking.objects.get(bId=id)
     param = {'booking': booking}
     return render(request, 'invoiceTemp.html',param)
+
+def loginView(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/admin/')
+        else:
+            return redirect('/login/')
+    return render(request, 'login.html')
+
+def checkout(request, id):
+    product = Product.objects.get(pId=id)
+    param = {'product': product}
+    if request.method == 'POST':
+        fname = request.POST['fname']
+        lname = request.POST['lname']
+        uname = request.POST['uname']
+        email = request.POST['email']
+        address1 = request.POST['address']
+        address2 = request.POST['address']
+        state = request.POST['state']
+        zip = request.POST['zip']
+        total = request.POST['odtot']
+
+    return render(request, 'checkout.html', param)
+
+def about(request):
+    return render(request, 'about.html')
+
+def team(request):
+    return render(request, 'team.html')

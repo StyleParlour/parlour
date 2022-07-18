@@ -7,7 +7,7 @@ from uuid import uuid4
 import random
 from django.core.mail import send_mail  
 from django.contrib.auth import authenticate, login
-import messagebird
+# import messagebird
 
 # Create your views here.
 def index(request):
@@ -18,13 +18,13 @@ def index(request):
         token = random.randint(1000, 9999)
         customer = Customers(name=name, email=email, phone=phone, token=token)
         customer.save()
-        client = messagebird.Client(ACCESS_KEY)
-        message = client.message_create(
-            'TestMessage',
-            'RECIPIENT',
-            'This is a test message',
-            { 'reference' : 'Foobar' }
-        )
+        # client = messagebird.Client(ACCESS_KEY)
+        # message = client.message_create(
+        #     'TestMessage',
+        #     'RECIPIENT',
+        #     'This is a test message',
+        #     { 'reference' : 'Foobar' }
+        # )
         send_mail('OTP', 'Your OTP is ' + str(token), 'hairnationparlour@gmail.com', [email])
         return redirect('/otp/')
     return render(request, 'index.html')

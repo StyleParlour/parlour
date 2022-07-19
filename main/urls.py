@@ -21,4 +21,5 @@ urlpatterns = [
     path('checkout/<int:id>', views.checkout, name='checkout'),
     path('about/', views.about, name='about'),
     path('team/', views.team, name='team'),
+    path('admin/oinvoicing/', views.oinvoicing, name='oinvoicing'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

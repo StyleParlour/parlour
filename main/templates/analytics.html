@@ -21,9 +21,9 @@
                                 <span class="iconify" data-icon="akar-icons:arrow-up-right"></span>
                             </div>
                         </div>
-                        <div class="bottomCard">
+                        {% comment %} <div class="bottomCard">
                             <p class="summary text-center">SUMMARY - <span class="increase"> 20% INCREASE </span> COMPARED TO LAST WEEK </p>
-                        </div>
+                        </div> {% endcomment %}
                     </div>
                 </div>
 
@@ -36,9 +36,9 @@
                                 <span class="iconify" data-icon="akar-icons:arrow-up-right"></span>
                             </div>
                         </div>
-                        <div class="bottomCard">
+                        {% comment %} <div class="bottomCard">
                             <p class="summary text-center">SUMMARY - <span class="increase"> 20% INCREASE </span> COMPARED TO LAST WEEK </p>
-                        </div>
+                        </div> {% endcomment %}
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@
             </div>
 
             <div class="row">
-                <div class="col-7">
+                <div class="col-9">
                     <canvas id="myChart" class="pt-4" style="width:100%"></canvas>
                 </div>
 
@@ -70,12 +70,17 @@
         </div>
     </div>
 
+   
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script>
-        var xValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
-        var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+        var xValues = [{% for dates in date %}{{dates}},{% endfor %} ];
+        var yValues = [{% for times in time %}{{times}},{% endfor %} ];
         
+        {% comment %} var xValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
+        var yValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]; {% endcomment %}
+
         new Chart("myChart", {
           type: "line",
           data: {
@@ -91,38 +96,26 @@
           options: {
             legend: {display: false},
             scales: {
-              yAxes: [{ticks: {min: 6, max:16}}],
-            }
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Date'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Slot Id'
+                    }
+                }]
+                }
           }
-        });
+          }
+        );
 
 
-         {% comment %} var xValues1 = ["Haircut", "Facial", "Spa", "Makeup", "Styling"];
-        var yValues1 = [55, 49, 44, 24, 15];
-        var barColors1 = [
-        "#b91d47",
-        "#00aba9",
-        "#2b5797",
-        "#e8c3b9",
-        "#1e7145"
-        ];
-
-        new Chart("myChart1", {
-        type: "doughnut",
-        data: {
-            labels: xValues1,
-            datasets: [{
-            backgroundColor: barColors1,
-            data: yValues1
-            }]
-        },
-        options: {
-            title: {
-            display: true,
-            text: ""
-            }
-        }
-        }); {% endcomment %}
         </script>
         
 {% endblock body %}

@@ -30,7 +30,7 @@ class Customers(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
     phone = models.IntegerField()
-    token = models.IntegerField()
+    token = models.IntegerField(null=True)
     isVerified = models.BooleanField(default=False)
     dateCreated = models.DateField(auto_now_add=True)
 
@@ -67,7 +67,7 @@ class Booking(models.Model):
     customer = models.ForeignKey(Customers, on_delete=models.CASCADE, null=True)
     slot = models.ForeignKey(Slot, on_delete=models.CASCADE, null=True)
     service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
-    bookingDate = models.DateField(null=True, auto_created=True)
+    bookingDate = models.DateField(null=True, auto_created=True, auto_now_add=True)
 
     def __str__(self):
         return str(self.bId)
@@ -77,7 +77,7 @@ class Order(models.Model):
     name = models.CharField(max_length=255)
     lastname = models.CharField(max_length=255)
     email = models.EmailField()
-    phone = models.IntegerField()
+    phone = models.IntegerField(null=True)
     username = models.CharField(max_length=255)
     address  = models.TextField()
     state = models.CharField(max_length=255)

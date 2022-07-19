@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'baseAdmin.html' %}
 {% load static %}
 
 {% block css %}
@@ -101,6 +101,10 @@
 				.btn-success {
 					display: none;
 				}
+
+				.sideNavWrapper{
+					display: none;
+				}
 			}
 		</style>
 {% endblock css %}
@@ -188,6 +192,7 @@
         <script>
 			function printDiv() {
 				window.print();
+				
 			}
         </script>
 

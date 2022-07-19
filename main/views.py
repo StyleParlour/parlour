@@ -2,7 +2,7 @@ import imp
 from urllib.robotparser import RequestRate
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Product, Offers, Customers, Service, Slot, Booking
+from .models import Product, Offers, Customers, Service, Slot, Booking,Order
 from uuid import uuid4
 import random
 from django.core.mail import send_mail  
@@ -42,18 +42,21 @@ def analytics(request):
         print(totalAmount)
         print(totalBookings)
         # sort bookings by date
-        bookings = sorted(bookings, key=lambda x: x.slot.slotDate)
-        booking = len(bookings)
-        # get service price of each booking and store in a dictionary with key as date
-        servicePrice = {}
+        # bookings = bookings[:11]
+        date = []
         for booking in bookings:
-            if booking.slot.slotDate in servicePrice:
-                servicePrice[booking.slot.slotDate] += booking.service.price
-                print('if')
-            else:
-                servicePrice[booking.slot.slotDate] = booking.service.price
-                print('else')
-        param = {'bookings': bookings, 'servicePrice': servicePrice, 'totalAmount': totalAmount, 'totalBookings': totalBookings}
+            dates = booking.slot.slotDate
+            dates = dates.strftime('%d-%m-%Y').split('-')[0]
+            date.append(dates)
+        print(date)
+
+        time = []
+        for booking in bookings:
+            times = booking.slot.slotTime
+            times = times.strftime('%H:%M').split(':')[0]
+            time.append(times)
+
+        param = {'date' : date,'time':time ,'bookings': bookings, 'totalAmount': totalAmount, 'totalBookings': totalBookings}
         return render(request, 'analytics.html', param)
     else:
         return redirect('/login/')
@@ -166,13 +169,15 @@ def checkout(request, id):
     if request.method == 'POST':
         fname = request.POST['fname']
         lname = request.POST['lname']
-        uname = request.POST['uname']
         email = request.POST['email']
-        address1 = request.POST['address']
-        address2 = request.POST['address']
+        address1 = request.POST['address1']
+        address2 = request.POST['address2']
         state = request.POST['state']
-        zip = request.POST['zip']
-        total = request.POST['odtot']
+        zip = request.POST['zipCode']
+        total = request.POST['odTot']
+
+        order = Order(name=fname, lastname=lname, email=email, address=address1+address2+zip, state=state, orderTotal=total)
+        order.save()
 
     return render(request, 'checkout.html', param)
 
@@ -181,3 +186,42 @@ def about(request):
 
 def team(request):
     return render(request, 'team.html')
+
+
+def oinvoicing(request):
+    slots = Slot.objects.all()
+    Services = Service.objects.all()
+    
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        date = request.POST['date']
+        service = request.POST['service']
+
+        slot = Slot.objects.get(sId=date)
+        service = Service.objects.get(sId=service)
+        # check if customer exists
+        customer = Customers.objects.filter(email=email)
+        if customer:
+            customer = Customers.objects.get(email=email)
+            booking = Booking(customer=customer, slot=slot, service=service)
+            id = booking.bId
+            print(id)
+            booking.save()
+            slot.slotRemaining = slot.slotRemaining - 1
+            slot.save()
+            return redirect(f'/invoiceGen/{id}')
+        else:
+            customer = Customers(name=name, email=email, phone=phone)
+            customer.save()
+            booking = Booking(customer=customer, slot=slot, service=service)
+            booking.save()
+            id = booking.bId
+            slot.slotRemaining = slot.slotRemaining - 1
+            slot.save()
+            print(id)
+            return redirect(f'/invoiceGen/{id}')
+    param = {'slots': slots, 'Services': Services}
+
+    return render(request, 'oinvoicing.html', param)

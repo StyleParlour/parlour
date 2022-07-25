@@ -1,7 +1,4 @@
 from email import message
-from pyexpat.errors import messages
-from turtle import update
-from urllib.robotparser import RequestRate
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Product, Offers, Customers, Service, Slot, Booking,Order, Update
@@ -9,8 +6,8 @@ from uuid import uuid4
 import random
 from django.core.mail import send_mail  
 from django.contrib.auth import authenticate, login
-# import requests
-# import json
+import requests
+import json
 # import messagebird
 
 # Create your views here.
@@ -30,9 +27,8 @@ def index(request):
             'secret': secretKey,
             'response': clientKey
         }
-        result = None
-        # r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=captchaData)
-        # result = json.loads(r.text) 
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=captchaData)
+        result = json.loads(r.text) 
         if result['success']:
             customer = Customers(name=name, email=email, phone=phone, token=token)
             customer.save()

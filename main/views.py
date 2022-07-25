@@ -1,5 +1,4 @@
 from email import message
-import imp
 from pyexpat.errors import messages
 from turtle import update
 from urllib.robotparser import RequestRate

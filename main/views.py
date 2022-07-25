@@ -1,33 +1,46 @@
+from email import message
 import imp
+from pyexpat.errors import messages
+from turtle import update
 from urllib.robotparser import RequestRate
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Product, Offers, Customers, Service, Slot, Booking,Order
+from .models import Product, Offers, Customers, Service, Slot, Booking,Order, Update
 from uuid import uuid4
 import random
 from django.core.mail import send_mail  
 from django.contrib.auth import authenticate, login
+import requests
+import json
 # import messagebird
 
 # Create your views here.
 def index(request):
+    updates = Update.objects.all()
+    # get the latest update
+    update = updates[0]
+    param = {'update': update}
     if request.method == 'POST':
         name = request.POST['name']
         email = request.POST['email']
         phone = request.POST['phone']
         token = random.randint(1000, 9999)
-        customer = Customers(name=name, email=email, phone=phone, token=token)
-        customer.save()
-        # client = messagebird.Client(ACCESS_KEY)
-        # message = client.message_create(
-        #     'TestMessage',
-        #     'RECIPIENT',
-        #     'This is a test message',
-        #     { 'reference' : 'Foobar' }
-        # )
-        send_mail('OTP', 'Your OTP is ' + str(token), 'hairnationparlour@gmail.com', [email])
-        return redirect('/otp/')
-    return render(request, 'index.html')
+        clientKey = request.POST['g-recaptcha-response']
+        secretKey = '6Lf4zxchAAAAANdTur8h2IgGKqwrEapfYtn1jO_F'
+        captchaData = {
+            'secret': secretKey,
+            'response': clientKey
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=captchaData)
+        result = json.loads(r.text) 
+        if result['success']:
+            customer = Customers(name=name, email=email, phone=phone, token=token)
+            customer.save()
+            return redirect(f'/otp/?token={token}')
+
+        else:
+            return redirect('/') 
+    return render(request, 'index.html', param)
 
 def analytics(request):
     # check if the user is logged in
@@ -128,20 +141,26 @@ def slot(request):
 def otp(request):
     slots = Slot.objects.all()
     Services = Service.objects.all()
-    if request.method == 'POST':
-        otp = request.POST['otp']
-        slot = request.POST['date']
-        service = request.POST['service']
-        customer = Customers.objects.get(token=otp)
-        if customer:
-            slot = Slot.objects.get(sId=slot)
-            service = Service.objects.get(sId=service)
-            booking = Booking(customer=customer, slot=slot, service=service)
-            booking.save()
-            slot.slotRemaining = slot.slotRemaining - 1
-            slot.save()
-            send_mail('Booking', 'Your booking is confirmed', 'hairnationparlour@gmail.com', [customer.email])
-            return redirect('/')
+    try:
+        token = request.GET['token']
+        if request.method == 'POST':
+            ##otp = request.POST['otp']
+            slot = request.POST['date']
+            service = request.POST['service']
+            customer = Customers.objects.get(token=token)
+            if customer:
+                slot = Slot.objects.get(sId=slot)
+                service = Service.objects.get(sId=service)
+                booking = Booking(customer=customer, slot=slot, service=service)
+                booking.save()
+                slot.slotRemaining = slot.slotRemaining - 1
+                slot.save()
+                user = customer.name
+                # send_mail('Booking', 'Your booking is confirmed', 'hairnationparlour@gmail.com', [customer.email])
+                messages.success(request, f'Hey {user}!!, Your booking is confirmed')
+                return redirect('/')
+    except:
+        return redirect('/')
     param = {'slots': slots, 'Services': Services}
 
     return render(request, 'otp.html', param)

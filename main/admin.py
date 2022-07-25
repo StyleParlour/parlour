@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Offers, Customers, Slot, Booking, Service, Order
+from .models import Product, Offers, Customers, Slot, Booking, Service, Order,Update
 
 
 # Register your models here.
@@ -39,3 +39,8 @@ class OrderAdmin(admin.ModelAdmin):
 
 admin.site.register(Order, admin.ModelAdmin)
 
+
+class UpdateAdmin(admin.ModelAdmin):
+    list_display = ('uId', 'update')
+
+admin.site.register(Update, admin.ModelAdmin)

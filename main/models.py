@@ -86,3 +86,11 @@ class Order(models.Model):
 
     def __str__(self):
         return self.name
+
+class Update(models.Model):
+    uId = models.AutoField(primary_key=True)
+    update = models.TextField()
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.update

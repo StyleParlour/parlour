@@ -9,8 +9,8 @@ from uuid import uuid4
 import random
 from django.core.mail import send_mail  
 from django.contrib.auth import authenticate, login
-import requests
-import json
+# import requests
+# import json
 # import messagebird
 
 # Create your views here.
@@ -30,8 +30,9 @@ def index(request):
             'secret': secretKey,
             'response': clientKey
         }
-        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=captchaData)
-        result = json.loads(r.text) 
+        result = None
+        # r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=captchaData)
+        # result = json.loads(r.text) 
         if result['success']:
             customer = Customers(name=name, email=email, phone=phone, token=token)
             customer.save()

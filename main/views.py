@@ -1,4 +1,5 @@
 from email import message
+import imp
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Product, Offers, Customers, Service, Slot, Booking,Order, Update
@@ -8,6 +9,7 @@ from django.core.mail import send_mail
 from django.contrib.auth import authenticate, login
 import requests
 import json
+from django.contrib import messages
 # import messagebird
 
 # Create your views here.

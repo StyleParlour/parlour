@@ -1,5 +1,7 @@
 from email import message
+import email
 import imp
+from operator import truth
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Product, Offers, Customers, Service, Slot, Booking,Order, Update
@@ -10,13 +12,17 @@ from django.contrib.auth import authenticate, login
 import requests
 import json
 from django.contrib import messages
+from django.conf import settings
 # import messagebird
 
 # Create your views here.
 def index(request):
     updates = Update.objects.all()
     # get the latest update
-    update = updates[0]
+    try:
+        update = updates[0]
+    except:
+        update = None
     param = {'update': update}
     if request.method == 'POST':
         name = request.POST['name']
@@ -139,6 +145,9 @@ def slot(request):
 def otp(request):
     slots = Slot.objects.all()
     Services = Service.objects.all()
+    for slot in slots:
+        if slot.slotRemaining == 0:
+            slot.delete()
     try:
         token = request.GET['token']
         if request.method == 'POST':
@@ -151,10 +160,19 @@ def otp(request):
                 service = Service.objects.get(sId=service)
                 booking = Booking(customer=customer, slot=slot, service=service)
                 booking.save()
+                slotTime = slot.slotTime
+                slotDate = slot.slotDate
+                slotTiming = str(slotTime) + ' ' + str(slotDate)
+                user = customer.name
+                send_mail(
+                    "Booking Confirmation",
+                    f"A slot have been successfully booked by {user} at {slotTiming}. Contact the customer for further details. Phone: {customer.phone}, Email: {customer.email}",
+                    settings.EMAIL_HOST_USER,
+                    ['hairnationparlour@gmail.com'],
+                    fail_silently=False,
+                )
                 slot.slotRemaining = slot.slotRemaining - 1
                 slot.save()
-                user = customer.name
-                # send_mail('Booking', 'Your booking is confirmed', 'hairnationparlour@gmail.com', [customer.email])
                 messages.success(request, f'Hey {user}!!, Your booking is confirmed')
                 return redirect('/')
     except:
@@ -242,3 +260,21 @@ def oinvoicing(request):
     param = {'slots': slots, 'Services': Services}
 
     return render(request, 'oinvoicing.html', param)
+
+# custom emailer function
+def emailer(cus, slot, service):
+    # subject = 'Booking Confirmation'
+    # message = f'Hey {customer.name}!!, Your booking is confirmed for {service.serviceName} on {slot.slotDate} at {slot.slotTime}'
+    # email_from = settings.EMAIL_HOST_USER
+    # recipient_list = ['hairnationparlour@gmail.com','harshplad@gmail.com']
+    # send_mail( subject, message, email_from, recipient_list )
+    name = cus.name
+    email = cus.email
+    phone = cus.phone
+    subject = 'Booking Confirmation'
+    slotdate = slot.slotDate
+    time = slot.slotTime
+    serviceName = service.serviceName
+    # message = f'Hey {name}!!, Your booking is confirmed for {service.serviceName} on {slot.slotDate} at {slot.slotTime}'
+    print("message")
+

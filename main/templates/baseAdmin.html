@@ -19,6 +19,8 @@
             z-index: 9999;
             box-shadow: inset -10px 0px 20px rgba(210, 205, 237, 0.35);
         }
+
+
         
         .navBrand{
             font-style: italic;
@@ -49,6 +51,11 @@
             color: #353535;
         }
         
+        .abc123{
+            background-color: #f36d31 !important;
+            color: #fff !important;
+        
+        }
         
     </style>
     {% block css %} {% endblock css %}
@@ -62,10 +69,13 @@
                 </div>
 
                 <div class="row">
+
+
                     <div class="col-12 navLinkWrap d-flex align-items-center">
                         <span class="iconify" data-icon="cil:graph"></span>
                         <a href="/admin/" class="navLink">ANALYTICS</a>
                     </div>
+
                     <div class="col-12 navLinkWrap d-flex align-items-center">
                         <span class="iconify" data-icon="ic:outline-local-offer"></span>
                         <a href="/admin/offers/" class="navLink">COUPONS & OFFERS</a>
@@ -100,6 +110,10 @@
                     <div class="col-12 navLinkWrap d-flex align-items-center">
                         <span class="iconify" data-icon="carbon:carbon-for-ibm-product"></span>
                         <a target="_blank" href="/administrator/main/update/" class="navLink">Update</a>
+                    </div>
+
+                    <div class="col-12 navLinkWrap d-flex align-items-center">
+                        <a href="/" class="navLink abc123 px-3 py-2 ">View Site</a>
                     </div>
                 </div>
             </div>
